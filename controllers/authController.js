@@ -44,8 +44,8 @@ exports.register = async (req, res) => {
 
     jwt.sign(
       payload,
-      process.env.JWT_SECRET || 'your-secret-key',
-      { expiresIn: '7d' },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRE },
       (err, token) => {
         if (err) throw err;
         res.status(201).json({
@@ -99,8 +99,8 @@ exports.login = async (req, res) => {
 
     jwt.sign(
       payload,
-      process.env.JWT_SECRET || 'your-secret-key',
-      { expiresIn: '7d' },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRE },
       (err, token) => {
         if (err) throw err;
         res.json({
